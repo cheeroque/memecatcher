@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import IconClipboard from '~/components/IconClipboard'
+import { IconClipboard } from '~/components/IconClipboard'
 import type { StickerWithEmotions } from '~/types'
 
-export default function Sticker({ sticker }: { sticker: StickerWithEmotions }) {
+export function Sticker({ sticker }: { sticker: StickerWithEmotions }) {
   const { emotions, image } = sticker
   const emojis = emotions?.map(({ emotion }) => emotion.emoji) ?? []
   const imagePath = `/storage/stickers/${image}`

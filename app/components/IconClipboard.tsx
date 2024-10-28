@@ -1,6 +1,6 @@
-import Icon from '~/components/Icon'
+import { Icon } from '~/components/Icon'
 
-export default function IconClipboard({ size }: { size?: number | string }) {
+export function IconClipboard({ size }: { size?: number | string }) {
   return (
     <Icon size={size}>
       <svg

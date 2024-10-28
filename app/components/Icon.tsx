@@ -1,4 +1,4 @@
-export default function Icon(props: { children: React.ReactElement; size?: number | string }) {
+export function Icon(props: { children: React.ReactElement; size?: number | string }) {
   const { children, size } = props
 
   return (
