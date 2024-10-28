@@ -4,5 +4,5 @@ import type { InferSelectModel } from 'drizzle-orm'
 export type Emotion = InferSelectModel<typeof emotionsTable>
 export type Sticker = InferSelectModel<typeof stickersTable>
 export type StickerWithEmotions = Sticker & {
-  emotions?: { emotion: Emotion }[]
+  emotions?: Array<{ emotion: Emotion }>
 }

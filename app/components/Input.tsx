@@ -1,4 +1,4 @@
-export default function Input(props: {
+export function Input(props: {
   autocomplete?: string
   disabled?: boolean
   id?: string
@@ -6,7 +6,8 @@ export default function Input(props: {
   placeholder?: string
   type?: string
   value?: string
-  onChange?: (event: React.ChangeEvent) => void
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   const { type } = props
 
