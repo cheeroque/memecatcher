@@ -1,10 +1,12 @@
 import { json, useLoaderData, useNavigation, useSubmit } from '@remix-run/react'
 import { eq, getTableColumns, or, sql } from 'drizzle-orm'
+import { useState } from 'react'
 
 import { db } from '~/drizzle/config.server'
 import { emotionsTable, stickersTable, stickersToEmotionsTable } from '~/drizzle/schema.server'
 import { SearchForm } from '~/components/SearchForm'
 import { StickerPicker } from '~/components/StickerPicker'
+import { Switch } from '~/components/Switch'
 
 import type { LoaderFunctionArgs } from '@remix-run/node'
 import type { Emotion, StickerWithEmotions } from '~/types'
@@ -84,6 +86,8 @@ export default function Index() {
   const navigation = useNavigation()
   const submit = useSubmit()
 
+  const [isEdit, setIsEdit] = useState(false)
+
   const isLoading =
     navigation.location && new URLSearchParams(navigation.location.search).has('q')
 
@@ -92,15 +96,27 @@ export default function Index() {
     submit(event.currentTarget, { replace: !isFirstSearch })
   }
 
+  function handleSwitchChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setIsEdit(event.target.checked)
+  }
+
   return (
     <div className="px-6 py-8">
-      <div className="mb-6">
+      <div className="flex gap-6 mb-6">
         <SearchForm
           emotions={emotions}
           isLoading={isLoading}
           q={q ?? undefined}
           onChange={handleFormChange}
         />
+
+        <div
+          className={`${isEdit ? 'border-cyan-300 bg-cyan-100 ' : ''}flex justify-center items-center px-3 py-2 rounded-md border`}
+        >
+          <Switch checked={isEdit} onChange={handleSwitchChange}>
+            <span className="whitespace-nowrap">Edit mode</span>
+          </Switch>
+        </div>
       </div>
 
       <StickerPicker stickers={stickers} />

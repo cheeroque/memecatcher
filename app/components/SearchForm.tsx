@@ -41,7 +41,7 @@ export function SearchForm(props: {
   }
 
   return (
-    <Form id="search-form" role="search" className="relative" onChange={onChange}>
+    <Form id="search-form" role="search" className="w-full relative" onChange={onChange}>
       <div className="relative">
         <Input
           id="search"
