@@ -1,5 +1,5 @@
 export function Input(props: {
-  autocomplete?: string
+  autoComplete?: string
   disabled?: boolean
   id?: string
   name?: string

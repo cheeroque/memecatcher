@@ -45,7 +45,7 @@ export function SearchForm(props: {
       <div className="relative">
         <Input
           id="search"
-          autocomplete="off"
+          autoComplete="off"
           name="q"
           placeholder="Enter emoji or keyword to search"
           type="search"
